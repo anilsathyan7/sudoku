@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Realtime Quickstart</title>
+
+    <!-- Load Styles -->
+    <link href="https://www.gstatic.com/realtime/quickstart-styles.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Load the Realtime JavaScript library -->
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <!-- Load the utility library -->
+    <script src="https://www.gstatic.com/realtime/realtime-client-utils.js"></script>
+	
+	<script>
+	/*function check(){document.getElementById("tgt").innerHTML = "Worked!!!";}*/
+	
+	
+	
+	//solution: values..That was an easy hack!!!
+	
+	var solution = [5,8,1,6,7,2,4,3,9,
+					7,9,2,8,4,3,6,5,1,
+					3,6,4,5,9,1,7,8,2,
+					4,3,8,9,5,7,2,1,6,
+					2,5,6,1,8,4,9,7,3,
+					1,7,9,3,2,6,8,4,5,
+					8,4,5,2,1,9,3,6,7,
+					9,1,3,7,6,8,5,2,4,
+					6,2,7,4,3,5,1,9,8];
+					
+	    
+					
+	function solncheck(){
+	
+	  var iMax = 9;
+	  var jMax = 9;
+	  var i=1;
+	  var j=1;
+	  var k=0;
+	  var flag=0;
+	  
+	  //alert('You failed..' + "found:"+document.getElementById('r'+i+'c'+j).value+"exp:"+solution[k]);
+	    
+        //document.getElementById("tgt").innerHTML = "Worked!!!";
+		for (i=1;i<=iMax;i++) {
+		 for (j=1;j<=jMax;j++) {
+		   var temp = document.getElementById('r'+i+'c'+j);
+		   if(temp)
+		       {if(  temp.value!= solution[k])
+		         {    
+				     alert('You failed.. Error at'+' r'+i+'c'+j + " Found: "+document.getElementById('r'+i+'c'+j).value+" Expected: "+solution[k]);
+				     flag=1;
+				     break;
+				   }
+			      
+			   }
+			   k++;
+			   
+			}
+			    if(flag==1)break;
+		}
+	
+	            if(flag==0) alert("Congratulations, Mission Accomplished!!! ");
+	}
+	
+	
+	
+	
+	
+	
+	
+	</script>
+	<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width:50%;
+    
+}
+
+td, th {
+    border: 2px solid #000000;
+    text-align: center;
+    padding: 14px;
+}
+
+<!--
+*:focus {
+    outline: none;
+}-->
+
+input {
+    width: 12px;
+    padding: 5px;
+	background-color:transparent;
+	border:none;
+	font-weight:bold;
+	font-size:20px;
+}
+
+
+.buttonn {
+    background-color:  #A9A9A9;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin:0 auto;
+    cursor: pointer;
+}
+
+hr {
+       display: block;
+       position: relative;
+       padding: 0;
+       margin: 8px auto;
+       height: 0;
+       width: 100%;
+       max-height: 0;
+       font-size: 1px;
+       line-height: 0;
+       clear: both;
+       border: none;
+       border-top: 1px solid #aaaaaa;
+       border-bottom: 1px solid #ffffff;
+    }
+
+
+</style>
+	
+	<script>
+	//timer
+	var mins = 30;  //Set the number of minutes you need
+    var secs = mins * 60;
+    var currentSeconds = 0;
+    var currentMinutes = 0;
+    /* 
+     *The line below it has not been tested. 
+     * setTimeout('Decrement()',1000);
+     */
+    setTimeout(Decrement,1000); 
+
+    function Decrement() {
+        currentMinutes = Math.floor(secs / 60);
+        currentSeconds = secs % 60;
+        if(currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
+        secs--;
+        document.getElementById("timer").innerHTML = "Time Remaing: "+ currentMinutes + ":" + currentSeconds; //Set the element id you need the time put into.
+		if(currentSeconds==0 && currentMinutes==0) {document.getElementById("timer").innerHTML = "Time Expired!!!";solncheck();}
+        if(secs !== -1) setTimeout('Decrement()',1000);
+    }
+	//timer
+	
+	
+	
+	
+	
+	
+	</script>
+	
+	
+	
+
+	
+	
+  </head>
+  <body>
+    <main>
+	  <!--The starting!! ..Have kept it hidden ..Traces of 'Google developers' sample.. -->
+      <h1 style="display:none;">Realtime Collaboration Quickstart</h1>
+      <p style="display:none;">Now that your application is running, simply type in either text box and see your changes instantly appear in the other one. Open
+      this same document in a <a onclick="window.open(window.location.href);return false;" target="_blank">new tab</a> to see it work across tabs.</p>
+      <textarea id="text_area_1" style="display:none;"></textarea>
+      <textarea id="text_area_2" style="display:none;"></textarea>
+	  <textarea id="text_area_3" style="display:none;"></textarea>
+	  
+	 
+      <button id="auth_button">Authorize</button>
+	  
+	  <h1 id="tgt" font="bold" style="text-align:center">A Multiplayer version of classical SUDOKU game </h1>
+	  <h2 id="tgt" font="bold" style="text-align:center">Sudoku is a classical puzzle game, where your objective is to fill the square boxes with numbers:0-9 </h2>
+	  <h3 id="tgt" font="bold" style="text-align:center">The following are the additional rues to be followed :-</h3>
+	  
+	  <div style="text-align:left">
+	   <ul style="font-weight: bold;">
+         <li>Each 3*3 mini block should contain all numbers: 0-9.</li>
+         <li>Each horizontal row must contain all the numbers: 0-9.</li>
+         <li>Each vertical column must contain all the numbers: 0-9.</li>
+		 <li>There exists only one solution.</li>
+		 <li>Share this document through url for multiplayer mode.</li>
+		 <li>Click 'Finish' when you are done.The game ends when timer expires.</li>
+		 <li>Click 'Authorize' to login with your google account for multiplayer mode.</li>
+       </ul>
+	  </div>
+	  
+	  <h3 id="timer" align="center" font-style="bold" font-size="26"></h3>
+	  
+	  <div style="text-align:center">
+        <button class="buttonn" value="Finish" onclick='solncheck()'>FINISH</button>
+	  </div>
+	  
+	  <hr>
+	  
+	  <h2  font="bold" style="text-align:center">M-SUDOKU</h2>
+    </main>
+	
+	
+	<!--- sudoku-matrix-->
+	
+	<div>
+	
+	
+	
+	
+	
+	
+  <!--The sudoku grid-->
+<table id="tone" align="center" >
+  
+  <tr is="r1" >
+    <td id="c1"  style="border-left-width: 4px;border-top-width: 4px">
+	<input type="text" id="r1c1" size="1" maxlength="1"  >
+	</td>
+	
+    <td  style="border-top-width: 4px">
+	<input type="text" id="r1c2" size="1" maxlength="1" >
+	</td>
+	
+    <td  style="border-right-width: 4px;border-top-width: 4px">
+	<input type="text" id="r1c3" size="1" maxlength="1">
+	</td>
+    
+    <td style="font-weight:bold;border-top-width: 4px" bgcolor="#dddddd">
+	<input type="text" value="6" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-top-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r1c5" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px;border-top-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r1c6" size="1" maxlength="1">
+	</td>
+	
+    
+    <td style="font-weight:bold;border-top-width: 4px">
+	<input type="text" value="4" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td style="border-top-width: 4px">
+	<input type="text" id="r1c8" size="1" maxlength="1">
+	</td>
+
+    <td  style="border-right-width: 4px;border-top-width: 4px">
+	<input type="text" id="r1c9" size="1" maxlength="1">
+	</td>
+    
+  </tr>
+  
+  <tr>
+    <td style="font-weight:bold;border-left-width: 4px">
+	<input type="text" value="7" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td >
+	<input type="text" id="r2c2" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r2c3" size="1" maxlength="1">
+	</td>
+    
+    <td bgcolor="#dddddd">
+	<input type="text" id="r2c4" size="1" maxlength="1">
+	</td>
+	
+    <td bgcolor="#dddddd">
+	<input type="text" id="r2c5" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" value="3" size="1" maxlength="1" readonly>
+	</td>
+    
+    <td style="font-weight:bold">
+	<input type="text" value="6" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td >
+	<input type="text" id="r2c8" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r2c9" size="1" maxlength="1">
+	</td>
+    
+  </tr>
+  
+  <tr>
+    <td  style="border-left-width: 4px;border-bottom-width: 4px">
+	<input type="text" id="r3c1" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-bottom-width: 4px">
+	<input type="text" id="r3c2" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px;border-bottom-width: 4px">
+	<input type="text" id="r3c3" size="1" maxlength="1">
+	</td>
+    
+    <td  style="border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r3c4" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" value="9" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td style="font-weight:bold;border-right-width: 4px;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" value="1" size="1" maxlength="1" readonly>
+	</td>
+    
+    <td  style="border-bottom-width: 4px">
+	<input type="text" id="r3c7" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-bottom-width: 4px">
+	<input type="text" value="8" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-right-width: 4px;border-bottom-width: 4px">
+	<input type="text" id="r3c9" size="1" maxlength="1">
+	</td>
+	
+  </tr>
+  
+  <tr>
+    <td  style="border-left-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r4c1" size="1" maxlength="1">
+	</td>
+	
+    <td bgcolor="#dddddd">
+	<input type="text" id="r4c2" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r4c3" size="1" maxlength="1">
+	</td>
+    
+    <td >
+	<input type="text" id="r4c4" size="1" maxlength="1">
+	</td>
+	
+    <td >
+	<input type="text" id="r4c5" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r4c6" size="1" maxlength="1">
+	</td>
+    
+    <td bgcolor="#dddddd">
+	<input type="text" id="r4c7" size="1" maxlength="1">
+	</td>
+	
+    <td bgcolor="#dddddd">
+	<input type="text" id="r4c8" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r4c9" size="1" maxlength="1">
+	</td>
+    
+  </tr>
+  
+  <tr>
+    <td  style="border-left-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r5c1" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold" bgcolor="#dddddd">
+	<input type="text" value="5" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r5c3" size="1" maxlength="1">
+	</td>
+    
+    <td style="font-weight:bold">
+	<input type="text" value="1" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td style="font-weight:bold">
+	<input type="text" value="8" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r5c6" size="1" maxlength="1">
+	</td>
+    
+    <td bgcolor="#dddddd";>
+	<input type="text" id="r5c7" size="1" maxlength="1">
+	</td>
+	
+    <td bgcolor="#dddddd";>
+	<input type="text" id="r5c8" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" value="3" size="1" maxlength="1" readonly> 
+	</td>
+    
+  </tr>
+  
+  <tr>
+    <td  style="border-left-width: 4px;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r6c1" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r6c2" size="1" maxlength="1">
+	</td>
+	
+    <td style="border-right-width: 4px;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r6c3" size="1" maxlength="1">
+	</td>
+    
+    <td style="font-weight:bold;border-bottom-width: 4px" >
+	<input type="text" value="3" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-bottom-width: 4px">
+	<input type="text" id="r6c5" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-right-width: 4px;border-bottom-width: 4px" >
+	<input type="text" value="6" size="1" maxlength="1" readonly>
+	</td>
+    
+    <td  style="border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r6c7" size="1" maxlength="1" >
+	</td>
+	
+    <td style="font-weight:bold;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text"  value="4" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td style="font-weight:bold;border-right-width: 4px;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" value="5" size="1" maxlength="1" readonly>
+	</td>
+	
+  </tr>
+  
+  <tr>
+    <td  style="border-left-width: 4px">
+	<input type="text" id="r7c1" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold">
+	<input type="text" value="4" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r7c3" size="1" maxlength="1">
+	</td>
+    
+    <td style="font-weight:bold" bgcolor="#dddddd">
+	<input type="text" value="2" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td bgcolor="#dddddd">
+	<input type="text" id="r7c5" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r7c6" size="1" maxlength="1">
+	</td>
+    
+    <td >
+	<input type="text" id="r7c7" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold">
+	<input type="text" value="6" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r7c9" size="1" maxlength="1">
+	</td>
+	
+  </tr>
+  
+  <tr>
+    <td style="font-weight:bold;border-left-width: 4px">
+	<input type="text" value="9" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td >
+	<input type="text" id="r8c2" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-right-width: 4px">
+	<input type="text" value="3" size="1" maxlength="1" readonly>
+	</td>
+    
+    <td bgcolor="#dddddd">
+	<input type="text" id="r8c4" size="1" maxlength="1">
+	</td>
+	
+    <td bgcolor="#dddddd">
+	<input type="text" id="r8c5" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r8c6" size="1" maxlength="1">
+	</td>
+    
+    <td  >
+	<input type="text" id="r8c7" size="1" maxlength="1">
+	</td>
+	
+    <td >
+	<input type="text" id="r8c8" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px">
+	<input type="text" id="r8c9" size="1" maxlength="1">
+	</td>
+	
+  </tr>
+  
+  <tr>
+    <td  style="border-left-width: 4px;border-bottom-width: 4px">
+	<input type="text" id="r9c1" size="1" maxlength="1">
+	</td>
+	
+    <td style="font-weight:bold;border-bottom-width: 4px">
+	<input type="text" value="2" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-right-width: 4px;border-bottom-width: 4px">
+	<input type="text" id="r9c3" size="1" maxlength="1">
+	</td>
+    
+    <td  style="border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r9c4" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r9c5" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px;border-bottom-width: 4px" bgcolor="#dddddd">
+	<input type="text" id="r9c6" size="1" maxlength="1">
+	</td>
+    
+    <td style="font-weight:bold;border-bottom-width: 4px">
+	<input type="text" value="1" size="1" maxlength="1" readonly>
+	</td>
+	
+    <td  style="border-bottom-width: 4px">
+	<input type="text" id="r9c8" size="1" maxlength="1">
+	</td>
+	
+    <td  style="border-right-width: 4px;border-bottom-width: 4px">
+	<input type="text" id="r9c9" size="1" maxlength="1">
+	</td>
+  </tr>
+  
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+<!--- sudoku-matrix-->
+	
+	
+	
+    <script>
+      var clientId = '604876645791-ubnofabkh7fasf0aquumg0fodvmb2ibs.apps.googleusercontent.com';
+
+      if (!/^([0-9])$/.test(clientId[0])) {
+        alert('Invalid Client ID - did you forget to insert your application Client ID?');
+      }
+      // Create a new instance of the realtime utility with your client ID.
+      var realtimeUtils = new utils.RealtimeUtils({ clientId: clientId });
+
+      authorize();
+
+      function authorize() {
+        // Attempt to authorize
+        realtimeUtils.authorize(function(response){
+          if(response.error){
+            // Authorization failed because this is the first time the user has used your application,
+            // show the authorize button to prompt them to authorize manually.
+            var button = document.getElementById('auth_button');
+            button.classList.add('visible');
+            button.addEventListener('click', function () {
+              realtimeUtils.authorize(function(response){
+                start();
+              }, true);
+            });
+          } else {
+              start();
+          }
+        }, false);
+      }
+
+      function start() {
+        // With auth taken care of, load a file, or create one if there
+        // is not an id in the URL.
+        var id = realtimeUtils.getParam('id');
+        if (id) {
+          // Load the document id from the URL
+          realtimeUtils.load(id.replace('/', ''), onFileLoaded, onFileInitialize);
+        } else {
+          // Create a new document, add it to the URL
+          realtimeUtils.createRealtimeFile('New Quickstart File', function(createResponse) {
+            window.history.pushState(null, null, '?id=' + createResponse.id);
+            realtimeUtils.load(createResponse.id, onFileLoaded, onFileInitialize);
+          });
+        }
+      }
+
+      // The first time a file is opened, it must be initialized with the
+      // document structure. This function will add a collaborative string
+      // to our model at the root.
+      function onFileInitialize(model) {
+        var string = model.createString();
+        string.setText('Welcome to the Quickstart App!');
+        model.getRoot().set('demo_string', string);
+		
+		/*redundant
+		var stringg = model.createString();
+        string.setText('Welcome to the Quickstart App2!');
+        model.getRoot().set('demo_stringg', stringg);
+		*/
+		/*
+		var t_r1c2 = model.createString();                  //r1c2
+        model.getRoot().set('demo_r1c2', t_r1c2);
+		
+		var t_r1c3 = model.createString();                  //r1c3
+        model.getRoot().set('demo_r1c3', t_r1c3);
+		*/
+		
+		//arrays........
+		
+		var iMax = 9;
+		var jMax = 9;
+		var i=1;
+		var j=1;
+		var f = new Array();
+
+		for (i=1;i<=iMax;i++) {
+		f[i]=new Array();
+		for (j=1;j<=jMax;j++) {
+		  f[i][j]=model.createString();
+		  model.getRoot().set('demo_r'+i+'c'+j, f[i][j]);
+			}
+		}
+		
+		
+		//arrays.........
+		//////////////worked pointtttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+      }
+
+      // After a file has been initialized and loaded, we can access the
+      // document. We will wire up the data model to the UI.
+      function onFileLoaded(doc) {
+        var collaborativeString = doc.getModel().getRoot().get('demo_string');
+        wireTextBoxes(collaborativeString);
+		
+		/*redundant..
+		var collaborativeStringg = doc.getModel().getRoot().get('demo_stringg');
+        wireTextBoxess(collaborativeStringg);
+		*/
+		
+		/*
+		var col_val_r1c2 = doc.getModel().getRoot().get('demo_r1c2');        //r1c2
+        wireTextBoxesss(col_val_r1c2,"r1c2");
+		
+		var col_val_r1c3 = doc.getModel().getRoot().get('demo_r1c3');        //r1c3
+        wireTextBoxesss(col_val_r1c3,"r1c3");
+		*/
+		
+		//arrays.......
+		var iMax = 9;
+		var jMax = 9;
+		var i=1;
+		var j=1;
+		var fn = new Array();
+
+		for (i=1;i<=iMax;i++) {
+		fn[i]=new Array();
+		for (j=1;j<=jMax;j++) {
+		  fn[i][j]=doc.getModel().getRoot().get('demo_r'+i+'c'+j)
+		  wireTextBoxesss(fn[i][j],'r'+i+'c'+j);
+			}
+		}
+		
+		//arrays.....
+		
+		
+      }
+
+      // Connects the text boxes to the collaborative string
+      function wireTextBoxes(collaborativeString) {
+        var textArea1 = document.getElementById('text_area_1');
+        var textArea2 = document.getElementById('text_area_2');
+        gapi.drive.realtime.databinding.bindString(collaborativeString, textArea1);
+        gapi.drive.realtime.databinding.bindString(collaborativeString, textArea2);
+      }
+	  
+	  /*check redundantt
+	  function wireTextBoxess(collaborativeStringg) {
+
+		var r1c1 = document.getElementById("r1c1");
+        gapi.drive.realtime.databinding.bindString(collaborativeStringg, r1c1);
+      }*/
+	 //var fixed = ['r1c4','r1c7','r2c1','r2c6','r2c7','r3c5','r3c6','r3c8','r5c2','r5c4','r5c5','r5c9'];
+	 
+	  function wireTextBoxesss(col_str,id) {
+        var element = document.getElementById(id);
+		if(element){
+		  gapi.drive.realtime.databinding.bindString(col_str, element);
+		}
+        
+      }
+	  
+    </script>
+	
+	
+	
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<!--
+<div class="g-savetodrive"
+   data-src="//example.com/path/to/myfile.pdf"
+   data-filename="My Statement.pdf"
+   data-sitename="My Company Name">
+   
+   
+   
+</div>
+-->
+<div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+	
+  </body>
+</html>
