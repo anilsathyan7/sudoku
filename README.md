@@ -1,4 +1,4 @@
-# sudoku
+# Sudoku
 A multiplayer sudoku game developed using HTML, JS and Google Realtime API
 
 ## Getting Started
@@ -41,7 +41,8 @@ Run the application on multiple window/tabs or browsers for realtime multiplayer
 
 #Online:- 
 
-You may host the same in google app-engine or similar setup and run the game from different systems with differetn accounts.Use the same url everywhere once you have logged in.
+You may host the same in google app-engine or similar setup and run the game from different systems with differetn accounts.
+Use the same url everywhere once you have logged in.
 
 
 ## Versioning
