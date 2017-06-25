@@ -8,7 +8,7 @@ Recommended basic knowledge of HTML,CSS and Javascript
 ## Prerequisites
 
 Just a 'Computer System': Unix,Windows or MAC ...</br>
-Google Account</br></br>
+Google Account</br>
 Internet and Webserver</br>
 (Eg.: Python to run the SimpleHTTPServer module)
 
