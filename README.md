@@ -36,10 +36,14 @@ For further instructions:-
   <li>Run the application on multiple window/tabs or browsers for realtime multiplayer gaming by reopening the url once you are authorized. 
 </ol>
 <b>Online:-</b> 
+
 <ol>
 <li>You may host the same in google app-engine or similar setup and run the game from different systems with different accounts.
   <li>Use the same url everywhere once you have logged in.
 </ol>
+
+Rules are specified at the top of the page.<br>
+Complete the game by 30 minutes(either alone or co-op mode).
 
 ## Versioning
 
