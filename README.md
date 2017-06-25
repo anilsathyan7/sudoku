@@ -16,12 +16,10 @@ Internet and Webserver</br>
 
 Refer:-
 
-For Google Realtime API documentation at 'developers.google.com'.
-
+For Google Realtime API documentation at 'developers.google.com'.</br>
 "https://developers.google.com/google-apps/realtime/realtime-quickstart"
 
-For deploying the application in app-engine, download: Google Cloud SDK.
-
+For deploying the application in app-engine, download: Google Cloud SDK.</br>
 Enable Drive API from API console and note down the client ID.
 
 For further instructions:-
@@ -39,7 +37,7 @@ For further instructions:-
 </ol>
 <b>Online:-</b> 
 <ol>
-<li>You may host the same in google app-engine or similar setup and run the game from different systems with different accounts.<br />
+<li>You may host the same in google app-engine or similar setup and run the game from different systems with different accounts.
   <li>Use the same url everywhere once you have logged in.
 </ol>
 
