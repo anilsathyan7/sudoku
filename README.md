@@ -35,15 +35,15 @@ For further instructions:-
 
 #Locally :-
 
-Add your 'Client ID' in the space provided.
-Start the server and set it listening at a specific port adress.
-Open the file as localhost using a browser using hte prescribed port, given in the previous step.
-Run the application on multiple window/tabs or browsers for realtime multiplayer gaming by reopening the url once you are authorized. 
+Add your 'Client ID' in the space provided.  
+  Start the server and set it listening at a specific port adress.
+  Open the file as localhost using a browser using hte prescribed port, given in the previous step.
+  Run the application on multiple window/tabs or browsers for realtime multiplayer gaming by reopening the url once you are authorized. 
 
 #Online:- 
 
-You may host the same in google app-engine or similar setup and run the game from different systems with differetn accounts.
-Use the same url everywhere once you have logged in.
+You may host the same in google app-engine or similar setup and run the game from different systems with different accounts.
+  Use the same url everywhere once you have logged in.
 
 
 ## Versioning
