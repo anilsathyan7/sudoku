@@ -1,15 +1,15 @@
 # Sudoku
-A multiplayer sudoku game developed using HTML, JS and Google Realtime API
+A multiplayer sudoku game developed using HTML, JS and Google Realtime API.
 
 ## Getting Started
 
-Recommended basic knowledge of HTML,CSS and Javascript
+Recommended basic knowledge of HTML,CSS and Javascript.
 
 ## Prerequisites
 
 Just a 'Computer System': Unix,Windows or MAC ...</br>
-Google Account</br>
-Internet and Webserver</br>
+Google Account.</br>
+Internet and Webserver.</br>
 (Eg.: Python to run the SimpleHTTPServer module)
 
 ### Installing
