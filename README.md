@@ -7,12 +7,9 @@ Recommended basic knowledge of HTML,CSS and Javascript
 
 ## Prerequisites
 
-Just a 'Computer System': Unix,Windows or MAC ...
-
-Google Account
-
-Internet and Webserver
-
+Just a 'Computer System': Unix,Windows or MAC ...</br>
+Google Account</br></br>
+Internet and Webserver</br>
 (Eg.: Python to run the SimpleHTTPServer module)
 
 ### Installing
@@ -36,7 +33,7 @@ For further instructions:-
 <b>Locally :-</b>
 <ol>
 <li>Add your 'Client ID' in the space provided.  <br />
-  <li>Start the server and set it listening at a specific port adress.<br /><br />
+  <li>Start the server and set it listening at a specific port adress.<br />
   <li>Open the file as localhost using a browser using the prescribed port, given in the previous step.<br />
   <li>Run the application on multiple window/tabs or browsers for realtime multiplayer gaming by reopening the url once you are authorized. 
 </ol>
