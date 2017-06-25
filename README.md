@@ -33,14 +33,14 @@ For further instructions:-
 
 ### Running the tests
 
-##Locally :-
+<b>Locally :-</b>
 
 Add your 'Client ID' in the space provided.  <br />
   Start the server and set it listening at a specific port adress.<br /><br />
   Open the file as localhost using a browser using hte prescribed port, given in the previous step.<br />
   Run the application on multiple window/tabs or browsers for realtime multiplayer gaming by reopening the url once you are authorized. 
 
-##Online:- 
+<b>Online:-</b> 
 
 You may host the same in google app-engine or similar setup and run the game from different systems with different accounts.<br />
   Use the same url everywhere once you have logged in.
